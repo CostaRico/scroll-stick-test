@@ -1,0 +1,22 @@
+<div class="sc-container">
+{{#each data as |group|}}
+    <div class="group">
+        <div class="group-info">
+          {{group.data.name}} test tes test
+        </div>
+        <div class="group-items">
+
+          {{#each group.items as |item|}}
+              <div class="group-item">
+                {{item.lastName}} {{item.middName}}
+              </div>
+          {{/each}}
+
+        </div>
+    </div>
+{{/each}}
+
+</div>
+
+
+
