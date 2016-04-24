@@ -32,8 +32,6 @@ export default Ember.Component.extend({
 
   visible: function () {
     var bi = this.get('baseItem');
-    //l('Render items: '+(0+cI)+' - '+ (cI+10));
-    //return this.get('data').slice(0+cI, cI+5);
     return this.get('data').slice(0+bi, 10+bi);
   }.property('data', 'baseItem'),
 
@@ -62,7 +60,7 @@ export default Ember.Component.extend({
   },
   calcHeights(){
     this.heights = [];
-    _.each(this.$('.group'), el=>{
+    _.each(this.$('div.group'), el=>{
       this.heights.push($(el).outerHeight());
     });
   },
@@ -100,7 +98,7 @@ export default Ember.Component.extend({
   },
   didInsertElement(){
     this._super(arguments);
-    this.set('cont', this.$('.sc-container'));
+    this.set('cont', this.$('div.sc-container'));
     this.calcHeights();
 
 
@@ -109,7 +107,6 @@ export default Ember.Component.extend({
       Em.run.debounce(this, ()=> {
         this.onScroll(ev);
       }, 30, true);
-
     }).trigger('scroll');
   },
 
@@ -121,7 +118,7 @@ export default Ember.Component.extend({
     this.scrollTop = ev.target.scrollTop;
     //l('Current AI: '+AI );
     if(this.lastAI!=AI){
-      this.$('div.group div.group-info').removeClass('curr');
+      this.$('div.group-info').removeClass('curr');
       this.$('div.group').eq(AI-1).find('div.group-info').addClass('curr');
     }
     if(AI==2 || AI ==8 ){
