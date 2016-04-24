@@ -62,8 +62,7 @@ export default Ember.Component.extend({
   },
   calcHeights(){
     this.heights = [];
-    this.$('.group').each((i, el)=> {
-      //this.offsets.push($(el).position().top);
+    _.each(this.$('.group'), el=>{
       this.heights.push($(el).outerHeight());
     });
   },
